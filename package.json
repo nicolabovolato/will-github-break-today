@@ -1,0 +1,19 @@
+{
+  "name": "will-github-break-today",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --test-scheduled",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply will-github-break-today --local",
+    "db:migrate:remote": "wrangler d1 migrations apply will-github-break-today --remote",
+    "types": "wrangler types",
+    "check": "tsc --noEmit",
+    "backfill": "node scripts/backfill.mjs",
+    "backfill:remote": "node scripts/backfill.mjs --remote"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "wrangler": "^4"
+  }
+}

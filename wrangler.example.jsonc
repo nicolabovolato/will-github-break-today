@@ -1,0 +1,30 @@
+// Copy to wrangler.jsonc and fill in the two placeholders.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "will-github-break-today",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "will-github-break-today",
+      // Your id from `npx wrangler d1 create will-github-break-today`.
+      "database_id": "<your-d1-database-id>",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "triggers": {
+    // Poll githubstatus.com and settle days and rounds every minute.
+    "crons": ["* * * * *"]
+  },
+  "routes": [
+    // A hostname on a zone in your own Cloudflare account; the DNS record is created on deploy.
+    { "pattern": "<your.domain.example>", "custom_domain": true }
+  ],
+  "observability": { "enabled": true }
+}

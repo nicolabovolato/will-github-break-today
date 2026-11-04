@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+.dev.vars
+worker-configuration.d.ts
+.DS_Store
+# Your deployment config; copy wrangler.example.jsonc
+wrangler.jsonc
